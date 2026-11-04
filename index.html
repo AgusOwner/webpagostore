@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aleizn - Diamantes Free Fire</title>
+<style>
+:root{--bg:#0b0b12;--card:#161622;--borde:#2a2a40;--texto:#f2f2f7;--suave:#9a9ab5;--a1:#ff6a00;--a2:#ffb300}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--texto);font-family:system-ui,Arial,sans-serif}
+header{padding:18px 20px;border-bottom:1px solid var(--borde);text-align:center}
+.logo{font-size:30px;font-weight:800;letter-spacing:1px;background:linear-gradient(90deg,var(--a1),var(--a2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.aviso{display:none;background:#3a2a00;color:var(--a2);text-align:center;font-size:13px;padding:8px}
+.hero{text-align:center;padding:36px 16px 6px}
+.hero h1{font-size:clamp(24px,5vw,38px)}
+.hero p{color:var(--suave);margin-top:8px}
+.grid{max-width:900px;margin:24px auto;padding:0 16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--borde);border-radius:14px;padding:20px 14px;text-align:center}
+.gem{font-size:34px}
+.card h3{margin:8px 0 4px;font-size:22px}
+.precio{color:var(--a2);font-weight:700;margin-bottom:12px}
+button{cursor:pointer;border:0;border-radius:10px;padding:11px 16px;font-weight:700;font-size:15px;background:linear-gradient(90deg,var(--a1),var(--a2));color:#111;width:100%}
+button:disabled{opacity:.6;cursor:wait}
+.fondo{position:fixed;inset:0;background:rgba(0,0,0,.78);display:none;align-items:center;justify-content:center;padding:14px}
+.fondo.abierto{display:flex}
+.modal{background:var(--card);border:1px solid var(--borde);border-radius:16px;padding:22px;width:100%;max-width:420px;max-height:95vh;overflow:auto}
+.resumen{color:var(--a2);font-weight:700;margin:4px 0 8px}
+label{display:block;font-size:13px;color:var(--suave);margin:12px 0 5px}
+input{width:100%;padding:11px;border-radius:10px;border:1px solid var(--borde);background:#0f0f1a;color:var(--texto);font-size:15px}
+.qr{text-align:center;margin-top:14px;color:var(--suave);font-size:14px}
+.qr img{width:220px;max-width:100%;background:#fff;border-radius:12px;padding:8px;margin-top:8px}
+.error{color:#ff6b6b;font-size:14px;margin:10px 0;min-height:18px}
+.cerrar{background:none;color:var(--suave);margin-top:8px;font-weight:500}
+footer{text-align:center;color:var(--suave);font-size:12px;padding:30px 10px}
+</style>
+</head>
+<body>
+<div class="aviso" id="aviso">VISTA PREVIA: los pedidos no se envían de verdad</div>
+<header><div class="logo">ALEIZN</div></header>
+
+<section class="hero">
+  <h1>💎 Diamantes Free Fire</h1>
+  <p>Elige tu paquete, paga con QR y recibe tu recarga.</p>
+</section>
+
+<div class="grid" id="grid"></div>
+
+<div class="fondo" id="fondo">
+  <div class="modal">
+    <div id="pasoForm">
+      <h2>Completar pedido</h2>
+      <div class="resumen" id="resumen"></div>
+
+      <label>Tu nombre</label>
+      <input id="nombre" maxlength="40" placeholder="Ej: Juan">
+
+      <label>ID de Free Fire</label>
+      <input id="idJuego" inputmode="numeric" placeholder="Solo números">
+
+      <div class="qr">
+        Paga <b id="monto"></b> escaneando este QR
+        <br><img src="qr.png" alt="QR de pago">
+      </div>
+
+      <label>Sube la captura de tu pago</label>
+      <input type="file" id="comprobante" accept="image/*">
+
+      <div class="error" id="error"></div>
+      <button id="enviar">Ya pagué, enviar pedido</button>
+      <button class="cerrar" id="cancelar">Cancelar</button>
+    </div>
+
+    <div id="pasoOk" style="display:none;text-align:center">
+      <h2>¡Pedido enviado! ✅</h2>
+      <p class="resumen" id="num" style="margin-top:12px"></p>
+      <p style="color:var(--suave);margin-top:8px">Verificaremos tu pago y recargaremos tus diamantes en breve.</p>
+      <button class="cerrar" id="cerrarOk">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<footer>Aleizn no está afiliado a Garena ni a Free Fire.</footer>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const PREVIA = location.hostname.endsWith('github.io');
+const DEMO = {
+  moneda: 'S/',
+  paquetes: [
+    { id: 1, diamantes: 100, precio: 4 },
+    { id: 2, diamantes: 310, precio: 12 },
+    { id: 3, diamantes: 520, precio: 20 },
+    { id: 4, diamantes: 1060, precio: 40 },
+    { id: 5, diamantes: 2180, precio: 80 },
+    { id: 6, diamantes: 5600, precio: 200 },
+  ],
+};
+let moneda = 'S/', paquetes = [], elegido = null;
+
+function pintar(d) {
+  moneda = d.moneda; paquetes = d.paquetes;
+  $('grid').innerHTML = paquetes.map(p => `
+    <div class="card">
+      <div class="gem">💎</div>
+      <h3>${p.diamantes}</h3>
+      <div class="precio">${moneda} ${p.precio.toFixed(2)}</div>
+      <button onclick="abrir(${p.id})">Comprar</button>
+    </div>`).join('');
+}
+
+if (PREVIA) {
+  $('aviso').style.display = 'block';
+  pintar(DEMO);
+} else {
+  fetch('/api/paquetes').then(r => r.json()).then(pintar);
+}
+
+function abrir(id) {
+  elegido = paquetes.find(p => p.id === id);
+  $('resumen').textContent = `💎 ${elegido.diamantes} diamantes · ${moneda} ${elegido.precio.toFixed(2)}`;
+  $('monto').textContent = `${moneda} ${elegido.precio.toFixed(2)}`;
+  $('error').textContent = '';
+  $('pasoForm').style.display = 'block';
+  $('pasoOk').style.display = 'none';
+  $('fondo').classList.add('abierto');
+}
+function cerrar() { $('fondo').classList.remove('abierto'); }
+$('cancelar').onclick = cerrar;
+$('cerrarOk').onclick = cerrar;
+
+function exito(numero) {
+  $('num').textContent = `Tu número de pedido: #${numero}`;
+  $('pasoForm').style.display = 'none';
+  $('pasoOk').style.display = 'block';
+  $('comprobante').value = '';
+}
+
+$('enviar').onclick = async () => {
+  const nombre = $('nombre').value.trim();
+  const idJuego = $('idJuego').value.trim();
+  const file = $('comprobante').files[0];
+  if (!nombre) return $('error').textContent = 'Escribe tu nombre';
+  if (!/^\d{6,15}$/.test(idJuego)) return $('error').textContent = 'Tu ID de Free Fire debe tener solo números';
+  if (!file) return $('error').textContent = 'Sube la captura de tu pago';
+
+  $('enviar').disabled = true;
+  $('enviar').textContent = 'Enviando...';
+
+  if (PREVIA) {
+    setTimeout(() => {
+      exito(1001);
+      $('enviar').disabled = false;
+      $('enviar').textContent = 'Ya pagué, enviar pedido';
+    }, 700);
+    return;
+  }
+
+  const fd = new FormData();
+  fd.append('paquete', elegido.id);
+  fd.append('nombre', nombre);
+  fd.append('idJuego', idJuego);
+  fd.append('comprobante', file);
+  try {
+    const r = await fetch('/api/pedido', { method: 'POST', body: fd });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.error || 'Error');
+    exito(d.numero);
+  } catch (e) {
+    $('error').textContent = e.message;
+  }
+  $('enviar').disabled = false;
+  $('enviar').textContent = 'Ya pagué, enviar pedido';
+};
+</script>
+</body>
+</html>
