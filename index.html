@@ -6,57 +6,71 @@
 <meta name="theme-color" content="#0a0a0c">
 <title>Aleizn | Diamantes Free Fire</title>
 <style>
-:root{--bg:#0a0a0c;--bg2:#101016;--card:#14141c;--borde:#26263a;--texto:#f4f4f8;--suave:#9b9bb4;--a1:#ff6a00;--a2:#ffb300}
+:root{--bg:#09090b;--bg2:#101014;--card:#121216;--borde:#26262e;--texto:#f4f4f8;--suave:#9b9bb0;--a1:#e11d2e;--a2:#ff8a00}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--texto);font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;line-height:1.5}
-a{color:inherit;text-decoration:none}
 .wrap{max-width:1000px;margin:0 auto;padding:0 16px}
 .aviso{display:none;background:#3a2a00;color:var(--a2);text-align:center;font-size:13px;padding:8px}
-nav{position:sticky;top:0;z-index:20;background:rgba(10,10,12,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--borde)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+nav{position:sticky;top:0;z-index:20;background:rgba(9,9,11,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--borde)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:60px;padding-top:8px;padding-bottom:8px}
 .logo{font-size:26px;font-weight:800;letter-spacing:1px}
 .grad{background:linear-gradient(90deg,var(--a1),var(--a2));-webkit-background-clip:text;background-clip:text;color:transparent}
-button,.btn{cursor:pointer;border:0;border-radius:10px;padding:11px 16px;font-weight:700;font-size:15px;background:linear-gradient(90deg,var(--a1),var(--a2));color:#111;width:100%;display:inline-block;text-align:center}
+#authArea{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.hola{color:var(--suave);font-size:14px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+button,.btn{cursor:pointer;border:0;border-radius:10px;padding:11px 16px;font-weight:700;font-size:15px;background:linear-gradient(90deg,var(--a1),var(--a2));color:#fff;width:100%;display:inline-block;text-align:center;text-decoration:none}
 button:disabled{opacity:.6;cursor:wait}
-.btn-sm{width:auto;padding:8px 16px;font-size:14px}
-.hero{text-align:center;padding:60px 0 20px;background:radial-gradient(ellipse at 50% 0%,rgba(255,106,0,.22),transparent 65%)}
-.pill{display:inline-block;border:1px solid var(--borde);background:var(--bg2);color:var(--a2);font-size:13px;padding:6px 14px;border-radius:999px;margin-bottom:18px}
-.hero h1{font-size:clamp(30px,6vw,52px);line-height:1.1;font-weight:800}
-.hero p{color:var(--suave);max-width:520px;margin:14px auto 24px}
-.cta{width:auto;padding:14px 30px;font-size:16px}
-.badges{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:34px}
-.badge{background:var(--card);border:1px solid var(--borde);border-radius:12px;padding:14px;font-size:14px;color:var(--suave);text-align:left}
-.badge b{display:block;color:var(--texto);font-size:15px}
-.t{text-align:center;font-size:clamp(22px,4vw,30px);margin:60px 0 8px}
-.sub{text-align:center;color:var(--suave);margin-bottom:26px}
+.btn-sm{width:auto;padding:8px 14px;font-size:13px}
+.sec{background:transparent;border:1px solid var(--borde);color:var(--suave)}
+.portada{position:relative;margin-top:16px;border-radius:18px;overflow:hidden;border:1px solid var(--borde);min-height:400px;display:flex;align-items:center;justify-content:center;text-align:center;padding:34px 16px;
+background:url('portada.jpg') center/cover no-repeat,radial-gradient(ellipse at 15% 0%,rgba(225,29,46,.5),transparent 55%),radial-gradient(ellipse at 95% 100%,rgba(255,138,0,.28),transparent 55%),#0b0708}
+.portada::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(255,255,255,.025) 0 2px,transparent 2px 14px)}
+.pc{position:relative;max-width:680px}
+.marca{letter-spacing:5px;font-size:13px;color:var(--suave);font-weight:700}
+.portada h1{font-size:clamp(34px,8vw,70px);line-height:1;font-weight:900;text-transform:uppercase;margin:12px 0}
+.portada h1 span{display:block}
+.cromo{background:linear-gradient(180deg,#fff,#8f8f9c);-webkit-background-clip:text;background-clip:text;color:transparent}
+.rojo{background:linear-gradient(180deg,#ff5d5d,#c4121e);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lema{letter-spacing:3px;font-size:12px;color:var(--suave);text-transform:uppercase;margin-bottom:22px}
+.tiles{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:24px}
+.tile{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:10px 14px;font-weight:800;font-size:15px}
+.cta{width:auto;padding:14px 32px;font-size:16px}
+.insignias{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:22px 0 0}
+.ins{background:var(--bg2);border:1px solid var(--borde);border-radius:999px;padding:8px 16px;font-size:12px;font-weight:800;letter-spacing:.5px;text-transform:uppercase}
+.t{text-align:center;font-size:clamp(22px,4vw,30px);margin:56px 0 6px}
+.sub{text-align:center;color:var(--suave);margin-bottom:24px;font-size:14px}
+.pasos{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.paso{background:var(--card);border:1px solid var(--borde);border-radius:14px;padding:20px 16px;text-align:center}
+.num{width:34px;height:34px;border-radius:50%;background:var(--a1);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
+.paso p{color:var(--suave);font-size:13px;margin-top:4px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
 .card{position:relative;background:var(--card);border:1px solid var(--borde);border-radius:14px;padding:22px 12px 16px;text-align:center;transition:.2s}
-.card:hover{transform:translateY(-4px);border-color:var(--a1);box-shadow:0 8px 30px rgba(255,106,0,.18)}
+.card:hover{transform:translateY(-4px);border-color:var(--a1);box-shadow:0 8px 30px rgba(225,29,46,.2)}
 .gem{font-size:36px}
 .card h3{margin:6px 0 2px;font-size:24px}
 .card small{color:var(--suave)}
 .precio{color:var(--a2);font-weight:800;font-size:18px;margin:8px 0 12px}
-.tag{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:linear-gradient(90deg,var(--a1),var(--a2));color:#111;font-size:11px;font-weight:800;padding:3px 10px;border-radius:999px;white-space:nowrap}
-.pasos{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-.paso{background:var(--card);border:1px solid var(--borde);border-radius:14px;padding:18px}
-.num{width:36px;height:36px;border-radius:50%;background:linear-gradient(90deg,var(--a1),var(--a2));color:#111;font-weight:800;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
-.paso p{color:var(--suave);font-size:14px}
+.tag{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:linear-gradient(90deg,var(--a1),var(--a2));color:#fff;font-size:11px;font-weight:800;padding:3px 10px;border-radius:999px;white-space:nowrap}
 details{background:var(--card);border:1px solid var(--borde);border-radius:12px;padding:14px 16px;margin-bottom:10px}
 summary{cursor:pointer;font-weight:600}
 details p{color:var(--suave);margin-top:8px;font-size:14px}
 footer{text-align:center;color:var(--suave);font-size:12px;padding:50px 10px 90px}
-.wsp{position:fixed;right:16px;bottom:16px;z-index:30;background:#25d366;color:#06240f;font-weight:800;border-radius:999px;padding:13px 18px;box-shadow:0 6px 20px rgba(0,0,0,.45)}
-.fondo{position:fixed;inset:0;z-index:40;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;padding:14px}
+.wsp{position:fixed;right:16px;bottom:16px;z-index:30;background:#25d366;color:#06240f;font-weight:800;border-radius:999px;padding:13px 18px;box-shadow:0 6px 20px rgba(0,0,0,.45);text-decoration:none}
+.fondo{position:fixed;inset:0;z-index:40;background:rgba(0,0,0,.82);display:none;align-items:center;justify-content:center;padding:14px}
 .fondo.abierto{display:flex}
 .modal{background:var(--card);border:1px solid var(--borde);border-radius:16px;padding:22px;width:100%;max-width:420px;max-height:95vh;overflow:auto}
 .resumen{color:var(--a2);font-weight:700;margin:4px 0 8px}
 label{display:block;font-size:13px;color:var(--suave);margin:12px 0 5px}
-input{width:100%;padding:11px;border-radius:10px;border:1px solid var(--borde);background:#0f0f1a;color:var(--texto);font-size:15px}
+input{width:100%;padding:11px;border-radius:10px;border:1px solid var(--borde);background:#0d0d12;color:var(--texto);font-size:15px}
 .qr{text-align:center;margin-top:14px;color:var(--suave);font-size:14px}
 .qr img{width:220px;max-width:100%;background:#fff;border-radius:12px;padding:8px;margin-top:8px}
 .error{color:#ff6b6b;font-size:14px;margin:10px 0;min-height:18px}
 .cerrar{background:none;color:var(--suave);margin-top:8px;font-weight:500}
+.ped{border:1px solid var(--borde);border-radius:12px;padding:12px;margin-top:10px;font-size:14px}
+.ped .suave{color:var(--suave);font-size:13px}
+.est{display:inline-block;margin-top:6px;font-size:12px;font-weight:700;color:var(--a2);text-transform:uppercase}
+.vacio{color:var(--suave);margin-top:12px}
+@media(max-width:560px){.hola{display:none}}
 </style>
 </head>
 <body>
@@ -64,40 +78,46 @@ input{width:100%;padding:11px;border-radius:10px;border:1px solid var(--borde);b
 
 <nav><div class="wrap">
   <div class="logo grad">ALEIZN</div>
-  <a class="btn btn-sm" id="linkSoporte" href="#" target="_blank" rel="noopener">Soporte</a>
+  <div id="authArea"></div>
 </div></nav>
 
-<header class="hero"><div class="wrap">
-  <span class="pill">💎 Tienda de diamantes Free Fire</span>
-  <h1>Recarga tus <span class="grad">diamantes</span><br>de forma fácil y segura</h1>
-  <p>Elige tu paquete, paga con QR, sube tu comprobante y recibe tu recarga. Solo necesitas tu ID.</p>
-  <a class="btn cta" href="#paquetes">Ver paquetes</a>
-  <div class="badges">
-    <div class="badge"><b>🔒 Sin contraseñas</b>Solo pedimos tu ID de jugador</div>
-    <div class="badge"><b>📲 Pago con QR</b>Escaneas, pagas y subes tu captura</div>
-    <div class="badge"><b>💬 Soporte por WhatsApp</b>Te atendemos si tienes dudas</div>
-  </div>
-</div></header>
-
 <main class="wrap">
+  <section class="portada">
+    <div class="pc">
+      <div class="marca">ALEIZN STORE</div>
+      <h1><span class="cromo">Todos tus</span><span class="rojo">diamantes</span></h1>
+      <div class="lema">Free Fire · recarga con tu ID · pago con QR</div>
+      <div class="tiles" id="tiles"></div>
+      <a class="btn cta" href="#paquetes">Ver paquetes</a>
+    </div>
+  </section>
+
+  <div class="insignias">
+    <span class="ins">💬 Soporte por WhatsApp</span>
+    <span class="ins">🔒 Sin contraseñas</span>
+    <span class="ins">📲 Pago con QR</span>
+  </div>
+
+  <h2 class="t">¿Cómo comprar?</h2>
+  <p class="sub">4 pasos simples · rápido y seguro</p>
+  <div class="pasos">
+    <div class="paso"><div class="num">1</div><b>Elige tu paquete</b><p>Selecciona los diamantes que deseas.</p></div>
+    <div class="paso"><div class="num">2</div><b>Ingresa tu ID</b><p>Escribe tu ID de Free Fire (inicia sesión con Google).</p></div>
+    <div class="paso"><div class="num">3</div><b>Paga con QR</b><p>Escanea el QR y sube la captura de tu pago.</p></div>
+    <div class="paso"><div class="num">4</div><b>Recibe tus diamantes</b><p>Verificamos tu pago y recargamos tu cuenta.</p></div>
+  </div>
+
   <h2 class="t" id="paquetes">Elige tu paquete</h2>
   <p class="sub">Diamantes para Free Fire</p>
   <div class="grid" id="grid"></div>
-
-  <h2 class="t">¿Cómo funciona?</h2>
-  <p class="sub">Comprar toma menos de un minuto</p>
-  <div class="pasos">
-    <div class="paso"><div class="num">1</div><b>Elige y pon tu ID</b><p>Selecciona tu paquete e ingresa tu ID de Free Fire.</p></div>
-    <div class="paso"><div class="num">2</div><b>Paga con el QR</b><p>Escanea el código con tu app de pagos y sube la captura.</p></div>
-    <div class="paso"><div class="num">3</div><b>Recibe tus diamantes</b><p>Verificamos tu pago y recargamos tu cuenta.</p></div>
-  </div>
 
   <h2 class="t">Preguntas frecuentes</h2>
   <p class="sub">Lo que más nos preguntan</p>
   <details><summary>¿Dónde encuentro mi ID de Free Fire?</summary><p>Abre el juego, toca tu foto de perfil y copia el número que aparece como ID.</p></details>
   <details><summary>¿Cuánto demora mi recarga?</summary><p>Verificamos tu pago y recargamos manualmente. Si tardamos, escríbenos por WhatsApp con tu número de pedido.</p></details>
   <details><summary>¿Qué pasa si me equivoco de ID?</summary><p>Revisa bien tu ID antes de enviar. Si te equivocaste, escríbenos cuanto antes por WhatsApp.</p></details>
-  <details><summary>¿Es seguro?</summary><p>Nunca te pedimos tu contraseña ni datos de tu cuenta, solo tu ID de jugador.</p></details>
+  <details><summary>¿Para qué inicio sesión con Google?</summary><p>Así guardamos el historial de tus pedidos y puedes consultarlo cuando quieras en "Mis pedidos".</p></details>
+  <details><summary>¿Es seguro?</summary><p>Nunca te pedimos la contraseña de tu juego, solo tu ID de jugador.</p></details>
 </main>
 
 <footer>Aleizn no está afiliado a Garena ni a Free Fire.</footer>
@@ -126,9 +146,20 @@ input{width:100%;padding:11px;border-radius:10px;border:1px solid var(--borde);b
   </div>
 </div></div>
 
+<div class="fondo" id="fondoPedidos"><div class="modal">
+  <h2>Mis pedidos</h2>
+  <div id="listaPedidos"></div>
+  <button class="cerrar" id="cerrarPedidos">Cerrar</button>
+</div></div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
 <script>
 const SOPORTE = '51999999999'; // TU número de WhatsApp con código de país, sin +
 const $ = (id) => document.getElementById(id);
+const esc = (s) => { const d = document.createElement('div'); d.textContent = s == null ? '' : s; return d.innerHTML; };
 const PREVIA = location.hostname.endsWith('github.io');
 const DEMO = { moneda: 'S/', paquetes: [
   { id: 1, diamantes: 100, precio: 4 }, { id: 2, diamantes: 310, precio: 12 },
@@ -136,26 +167,87 @@ const DEMO = { moneda: 'S/', paquetes: [
   { id: 5, diamantes: 2180, precio: 80 }, { id: 6, diamantes: 5600, precio: 200 } ] };
 let moneda = 'S/', paquetes = [], elegido = null;
 
-$('linkSoporte').href = $('wsp').href = 'https://wa.me/' + SOPORTE;
+$('wsp').href = 'https://wa.me/' + SOPORTE;
 
+// ---------- Firebase (login con Google + historial) ----------
+const FB_OK = typeof firebase !== 'undefined' && typeof FIREBASE_CONFIG !== 'undefined'
+  && FIREBASE_CONFIG.apiKey && !String(FIREBASE_CONFIG.apiKey).startsWith('PEGA');
+let auth = null, db = null, usuario = null;
+if (FB_OK) {
+  firebase.initializeApp(FIREBASE_CONFIG);
+  auth = firebase.auth();
+  db = firebase.firestore();
+  auth.onAuthStateChanged((u) => { usuario = u; pintarAuth(); });
+}
+function pintarAuth() {
+  const a = $('authArea');
+  if (!FB_OK) { a.innerHTML = ''; return; }
+  if (usuario) {
+    const corto = (usuario.displayName || usuario.email || '').split(' ')[0];
+    a.innerHTML = `<span class="hola">Hola, ${esc(corto)}</span>
+      <button class="btn-sm" onclick="verPedidos()">Mis pedidos</button>
+      <button class="btn-sm sec" onclick="auth.signOut()">Salir</button>`;
+  } else {
+    a.innerHTML = `<button class="btn-sm" onclick="entrar()">Iniciar sesión con Google</button>`;
+  }
+}
+async function entrar() {
+  try { await auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()); return true; }
+  catch (e) { alert('No se pudo iniciar sesión: ' + e.message); return false; }
+}
+async function guardarHistorial(numero, nombre, idJuego) {
+  const u = auth && auth.currentUser;
+  if (!FB_OK || !u) return;
+  try {
+    await db.collection('pedidos').add({
+      uid: u.uid, email: u.email, numero, diamantes: elegido.diamantes, precio: elegido.precio,
+      moneda, idJuego, nombre, estado: 'pendiente', previa: PREVIA,
+      fecha: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+  } catch (e) { console.log('No se guardó el historial', e); }
+}
+async function verPedidos() {
+  $('listaPedidos').innerHTML = '<p class="vacio">Cargando...</p>';
+  $('fondoPedidos').classList.add('abierto');
+  try {
+    const snap = await db.collection('pedidos').where('uid', '==', auth.currentUser.uid).get();
+    const lista = snap.docs.map((d) => d.data()).sort((a, b) => ((b.fecha && b.fecha.seconds) || 0) - ((a.fecha && a.fecha.seconds) || 0));
+    $('listaPedidos').innerHTML = lista.length ? lista.map((p) => `
+      <div class="ped">
+        <div><b>#${esc(p.numero)}</b> · 💎 ${esc(p.diamantes)}</div>
+        <div class="suave">${esc(p.moneda)} ${Number(p.precio).toFixed(2)} · ID ${esc(p.idJuego)} · ${p.fecha ? new Date(p.fecha.seconds * 1000).toLocaleString() : 'ahora'}</div>
+        <span class="est">${esc(p.estado)}${p.previa ? ' (prueba)' : ''}</span>
+      </div>`).join('') : '<p class="vacio">Aún no tienes pedidos.</p>';
+  } catch (e) { $('listaPedidos').innerHTML = '<p class="vacio">No se pudo cargar tu historial.</p>'; }
+}
+$('cerrarPedidos').onclick = () => $('fondoPedidos').classList.remove('abierto');
+
+// ---------- Paquetes ----------
 function pintar(d) {
   moneda = d.moneda; paquetes = d.paquetes;
+  $('tiles').innerHTML = paquetes.map((p) => `<span class="tile">💎 ${p.diamantes}</span>`).join('');
   $('grid').innerHTML = paquetes.map((p, i) => `
     <div class="card">
       ${i === 2 ? '<span class="tag">RECOMENDADO</span>' : ''}
       <div class="gem">💎</div>
       <h3>${p.diamantes}</h3><small>diamantes</small>
       <div class="precio">${moneda} ${p.precio.toFixed(2)}</div>
-      <button onclick="abrir(${p.id})">Comprar</button>
+      <button onclick="comprar(${p.id})">Comprar</button>
     </div>`).join('');
 }
 if (PREVIA) { $('aviso').style.display = 'block'; pintar(DEMO); }
-else { fetch('/api/paquetes').then(r => r.json()).then(pintar); }
+else { fetch('/api/paquetes').then((r) => r.json()).then(pintar); }
+pintarAuth();
 
+async function comprar(id) {
+  if (FB_OK && !auth.currentUser) { if (!(await entrar())) return; }
+  abrir(id);
+}
 function abrir(id) {
-  elegido = paquetes.find(p => p.id === id);
+  elegido = paquetes.find((p) => p.id === id);
   $('resumen').textContent = `💎 ${elegido.diamantes} diamantes · ${moneda} ${elegido.precio.toFixed(2)}`;
   $('monto').textContent = `${moneda} ${elegido.precio.toFixed(2)}`;
+  if (auth && auth.currentUser && !$('nombre').value) $('nombre').value = (auth.currentUser.displayName || '').split(' ')[0].slice(0, 40);
   $('error').textContent = '';
   $('pasoForm').style.display = 'block'; $('pasoOk').style.display = 'none';
   $('fondo').classList.add('abierto');
@@ -174,10 +266,12 @@ $('enviar').onclick = async () => {
   if (!/^\d{6,15}$/.test(idJuego)) return $('error').textContent = 'Tu ID de Free Fire debe tener solo números';
   if (!file) return $('error').textContent = 'Sube la captura de tu pago';
   $('enviar').disabled = true; $('enviar').textContent = 'Enviando...';
-  if (PREVIA) {
-    setTimeout(() => { exito(1001); $('enviar').disabled = false; $('enviar').textContent = 'Ya pagué, enviar pedido'; }, 700);
-    return;
-  }
+  const listo = async (numero) => {
+    await guardarHistorial(numero, nombre, idJuego);
+    exito(numero);
+    $('enviar').disabled = false; $('enviar').textContent = 'Ya pagué, enviar pedido';
+  };
+  if (PREVIA) { setTimeout(() => listo(1000 + Math.floor(Math.random() * 9000)), 600); return; }
   const fd = new FormData();
   fd.append('paquete', elegido.id); fd.append('nombre', nombre);
   fd.append('idJuego', idJuego); fd.append('comprobante', file);
@@ -185,9 +279,11 @@ $('enviar').onclick = async () => {
     const r = await fetch('/api/pedido', { method: 'POST', body: fd });
     const d = await r.json();
     if (!r.ok) throw new Error(d.error || 'Error');
-    exito(d.numero);
-  } catch (e) { $('error').textContent = e.message; }
-  $('enviar').disabled = false; $('enviar').textContent = 'Ya pagué, enviar pedido';
+    await listo(d.numero);
+  } catch (e) {
+    $('error').textContent = e.message;
+    $('enviar').disabled = false; $('enviar').textContent = 'Ya pagué, enviar pedido';
+  }
 };
 </script>
 </body>
