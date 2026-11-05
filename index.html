@@ -11,32 +11,21 @@
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--texto);font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;line-height:1.5}
 .wrap{max-width:1000px;margin:0 auto;padding:0 16px}
-.aviso{display:none;background:#3a2a00;color:var(--a2);text-align:center;font-size:13px;padding:8px}
-nav{position:sticky;top:0;z-index:20;background:rgba(9,9,11,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--borde)}
+nav{position:sticky;top:0;z-index:20;background:rgba(9,9,11,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--borde)}
 nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:60px;padding-top:8px;padding-bottom:8px}
+.izq{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .logo{font-size:26px;font-weight:800;letter-spacing:1px}
 .grad{background:linear-gradient(90deg,var(--a1),var(--a2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.ins{background:var(--bg2);border:1px solid var(--borde);border-radius:999px;padding:5px 10px;font-size:11px;font-weight:700;color:var(--texto);text-decoration:none;white-space:nowrap}
 #authArea{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
 .hola{color:var(--suave);font-size:14px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 button,.btn{cursor:pointer;border:0;border-radius:10px;padding:11px 16px;font-weight:700;font-size:15px;background:linear-gradient(90deg,var(--a1),var(--a2));color:#fff;width:100%;display:inline-block;text-align:center;text-decoration:none}
 button:disabled{opacity:.6;cursor:wait}
 .btn-sm{width:auto;padding:8px 14px;font-size:13px}
-.sec{background:transparent;border:1px solid var(--borde);color:var(--suave)}
-.portada{position:relative;margin-top:16px;border-radius:18px;overflow:hidden;border:1px solid var(--borde);min-height:400px;display:flex;align-items:center;justify-content:center;text-align:center;padding:34px 16px;
+.sec{background:transparent;border:1px solid var(--borde);color:var(--texto)}
+.portada{margin-top:16px;border-radius:18px;border:1px solid var(--borde);aspect-ratio:16/6;min-height:180px;
 background:url('portada.jpg') center/cover no-repeat,radial-gradient(ellipse at 15% 0%,rgba(225,29,46,.5),transparent 55%),radial-gradient(ellipse at 95% 100%,rgba(255,138,0,.28),transparent 55%),#0b0708}
-.portada::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(255,255,255,.025) 0 2px,transparent 2px 14px)}
-.pc{position:relative;max-width:680px}
-.marca{letter-spacing:5px;font-size:13px;color:var(--suave);font-weight:700}
-.portada h1{font-size:clamp(34px,8vw,70px);line-height:1;font-weight:900;text-transform:uppercase;margin:12px 0}
-.portada h1 span{display:block}
-.cromo{background:linear-gradient(180deg,#fff,#8f8f9c);-webkit-background-clip:text;background-clip:text;color:transparent}
-.rojo{background:linear-gradient(180deg,#ff5d5d,#c4121e);-webkit-background-clip:text;background-clip:text;color:transparent}
-.lema{letter-spacing:3px;font-size:12px;color:var(--suave);text-transform:uppercase;margin-bottom:22px}
-.tiles{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:24px}
-.tile{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:10px 14px;font-weight:800;font-size:15px}
-.cta{width:auto;padding:14px 32px;font-size:16px}
-.insignias{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:22px 0 0}
-.ins{background:var(--bg2);border:1px solid var(--borde);border-radius:999px;padding:8px 16px;font-size:12px;font-weight:800;letter-spacing:.5px;text-transform:uppercase}
 .t{text-align:center;font-size:clamp(22px,4vw,30px);margin:56px 0 6px}
 .sub{text-align:center;color:var(--suave);margin-bottom:24px;font-size:14px}
 .pasos{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
@@ -69,40 +58,35 @@ input{width:100%;padding:11px;border-radius:10px;border:1px solid var(--borde);b
 .ped{border:1px solid var(--borde);border-radius:12px;padding:12px;margin-top:10px;font-size:14px}
 .ped .suave{color:var(--suave);font-size:13px}
 .est{display:inline-block;margin-top:6px;font-size:12px;font-weight:700;color:var(--a2);text-transform:uppercase}
-.vacio{color:var(--suave);margin-top:12px}
-@media(max-width:560px){.hola{display:none}}
+.vacio,.nota{color:var(--suave);margin-top:12px;font-size:13px}
+.google{background:#fff;color:#222}
+.o{text-align:center;color:var(--suave);font-size:12px;margin:14px 0 2px}
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:700px){.ins em{display:none}.hola{display:none}}
 </style>
 </head>
 <body>
-<div class="aviso" id="aviso">VISTA PREVIA: los pedidos no se envían de verdad</div>
 
 <nav><div class="wrap">
-  <div class="logo grad">ALEIZN</div>
+  <div class="izq">
+    <div class="logo grad">ALEIZN</div>
+    <div class="chips">
+      <a class="ins" id="linkSoporte" href="#" target="_blank" rel="noopener">💬 <em>Soporte WhatsApp</em></a>
+      <span class="ins">🎮 <em>Solo tu ID</em></span>
+      <span class="ins">📲 <em>Pago con QR</em></span>
+    </div>
+  </div>
   <div id="authArea"></div>
 </div></nav>
 
 <main class="wrap">
-  <section class="portada">
-    <div class="pc">
-      <div class="marca">ALEIZN STORE</div>
-      <h1><span class="cromo">Todos tus</span><span class="rojo">diamantes</span></h1>
-      <div class="lema">Free Fire · recarga con tu ID · pago con QR</div>
-      <div class="tiles" id="tiles"></div>
-      <a class="btn cta" href="#paquetes">Ver paquetes</a>
-    </div>
-  </section>
-
-  <div class="insignias">
-    <span class="ins">💬 Soporte por WhatsApp</span>
-    <span class="ins">🔒 Sin contraseñas</span>
-    <span class="ins">📲 Pago con QR</span>
-  </div>
+  <section class="portada" aria-label="Portada"></section>
 
   <h2 class="t">¿Cómo comprar?</h2>
   <p class="sub">4 pasos simples · rápido y seguro</p>
   <div class="pasos">
     <div class="paso"><div class="num">1</div><b>Elige tu paquete</b><p>Selecciona los diamantes que deseas.</p></div>
-    <div class="paso"><div class="num">2</div><b>Ingresa tu ID</b><p>Escribe tu ID de Free Fire (inicia sesión con Google).</p></div>
+    <div class="paso"><div class="num">2</div><b>Ingresa tu ID</b><p>Escribe tu ID de Free Fire (inicia sesión en tu cuenta).</p></div>
     <div class="paso"><div class="num">3</div><b>Paga con QR</b><p>Escanea el QR y sube la captura de tu pago.</p></div>
     <div class="paso"><div class="num">4</div><b>Recibe tus diamantes</b><p>Verificamos tu pago y recargamos tu cuenta.</p></div>
   </div>
@@ -116,12 +100,27 @@ input{width:100%;padding:11px;border-radius:10px;border:1px solid var(--borde);b
   <details><summary>¿Dónde encuentro mi ID de Free Fire?</summary><p>Abre el juego, toca tu foto de perfil y copia el número que aparece como ID.</p></details>
   <details><summary>¿Cuánto demora mi recarga?</summary><p>Verificamos tu pago y recargamos manualmente. Si tardamos, escríbenos por WhatsApp con tu número de pedido.</p></details>
   <details><summary>¿Qué pasa si me equivoco de ID?</summary><p>Revisa bien tu ID antes de enviar. Si te equivocaste, escríbenos cuanto antes por WhatsApp.</p></details>
-  <details><summary>¿Para qué inicio sesión con Google?</summary><p>Así guardamos el historial de tus pedidos y puedes consultarlo cuando quieras en "Mis pedidos".</p></details>
+  <details><summary>¿Para qué creo una cuenta?</summary><p>Así guardamos el historial de tus pedidos y puedes consultarlo cuando quieras en "Mis pedidos".</p></details>
   <details><summary>¿Es seguro?</summary><p>Nunca te pedimos la contraseña de tu juego, solo tu ID de jugador.</p></details>
 </main>
 
 <footer>Aleizn no está afiliado a Garena ni a Free Fire.</footer>
 <a class="wsp" id="wsp" href="#" target="_blank" rel="noopener">💬 WhatsApp</a>
+
+<div class="fondo" id="fondoLogin"><div class="modal">
+  <h2>Tu cuenta</h2>
+  <p class="nota">Inicia sesión o crea tu cuenta para guardar el historial de tus pedidos.</p>
+  <button id="btnGoogle" class="google" style="margin-top:14px">Continuar con Google</button>
+  <div class="o">o con usuario y contraseña</div>
+  <label>Usuario</label>
+  <input id="lUser" autocomplete="username" maxlength="40" placeholder="Ej: juan_123">
+  <label>Contraseña</label>
+  <input id="lPass" type="password" autocomplete="current-password" placeholder="Mínimo 6 caracteres">
+  <div class="error" id="lError"></div>
+  <div class="dos"><button id="btnEntrar">Entrar</button><button id="btnCrear" class="sec">Crear cuenta</button></div>
+  <p class="nota">Si olvidas la contraseña de una cuenta con usuario no se puede recuperar. Con Google siempre podrás entrar.</p>
+  <button class="cerrar" id="cerrarLogin">Cancelar</button>
+</div></div>
 
 <div class="fondo" id="fondo"><div class="modal">
   <div id="pasoForm">
@@ -167,41 +166,89 @@ const DEMO = { moneda: 'S/', paquetes: [
   { id: 5, diamantes: 2180, precio: 80 }, { id: 6, diamantes: 5600, precio: 200 } ] };
 let moneda = 'S/', paquetes = [], elegido = null;
 
-$('wsp').href = 'https://wa.me/' + SOPORTE;
+$('linkSoporte').href = $('wsp').href = 'https://wa.me/' + SOPORTE;
 
-// ---------- Firebase (login con Google + historial) ----------
+// ---------- Cuentas (Firebase: Google o usuario/contraseña) ----------
 const FB_OK = typeof firebase !== 'undefined' && typeof FIREBASE_CONFIG !== 'undefined'
   && FIREBASE_CONFIG.apiKey && !String(FIREBASE_CONFIG.apiKey).startsWith('PEGA');
-let auth = null, db = null, usuario = null;
+let auth = null, db = null, usuario = null, pendiente = null;
+const DOMINIO = '@aleizn.local'; // los usuarios sin correo se guardan como usuario@aleizn.local
+
+const nombreVisible = (u) => u.displayName || (u.email || '').split('@')[0];
+const aCorreo = (t) => { t = t.trim().toLowerCase(); return t.includes('@') ? t : t + DOMINIO; };
+
 if (FB_OK) {
   firebase.initializeApp(FIREBASE_CONFIG);
   auth = firebase.auth();
   db = firebase.firestore();
-  auth.onAuthStateChanged((u) => { usuario = u; pintarAuth(); });
+  auth.onAuthStateChanged((u) => {
+    usuario = u; pintarAuth();
+    if (u) cerrarLogin();
+    if (u && pendiente) { const id = pendiente; pendiente = null; abrir(id); }
+  });
 }
 function pintarAuth() {
   const a = $('authArea');
   if (!FB_OK) { a.innerHTML = ''; return; }
   if (usuario) {
-    const corto = (usuario.displayName || usuario.email || '').split(' ')[0];
+    const corto = nombreVisible(usuario).split(' ')[0];
     a.innerHTML = `<span class="hola">Hola, ${esc(corto)}</span>
       <button class="btn-sm" onclick="verPedidos()">Mis pedidos</button>
       <button class="btn-sm sec" onclick="auth.signOut()">Salir</button>`;
   } else {
-    a.innerHTML = `<button class="btn-sm" onclick="entrar()">Iniciar sesión con Google</button>`;
+    a.innerHTML = `<button class="btn-sm" onclick="abrirLogin()">Iniciar sesión</button>`;
   }
 }
-async function entrar() {
-  try { await auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()); return true; }
-  catch (e) { alert('No se pudo iniciar sesión: ' + e.message); return false; }
+function abrirLogin() { $('lError').textContent = ''; $('fondoLogin').classList.add('abierto'); }
+function cerrarLogin() { $('fondoLogin').classList.remove('abierto'); }
+function msgError(e) {
+  const m = {
+    'auth/email-already-in-use': 'Ese usuario ya existe, elige otro o inicia sesión',
+    'auth/invalid-credential': 'Usuario o contraseña incorrectos',
+    'auth/wrong-password': 'Usuario o contraseña incorrectos',
+    'auth/user-not-found': 'Usuario o contraseña incorrectos',
+    'auth/weak-password': 'La contraseña debe tener al menos 6 caracteres',
+    'auth/invalid-email': 'Usuario no válido',
+    'auth/operation-not-allowed': 'Falta activar este método de acceso en Firebase',
+    'auth/too-many-requests': 'Demasiados intentos, espera un momento',
+  };
+  return m[e.code] || ('Error: ' + e.message);
 }
+async function entrarGoogle() {
+  try { await auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()); }
+  catch (e) { if (e.code !== 'auth/popup-closed-by-user') $('lError').textContent = msgError(e); }
+}
+async function entrarUsuario() {
+  const t = $('lUser').value.trim(), pass = $('lPass').value;
+  if (!t || !pass) return $('lError').textContent = 'Escribe tu usuario y contraseña';
+  try { await auth.signInWithEmailAndPassword(aCorreo(t), pass); }
+  catch (e) { $('lError').textContent = msgError(e); }
+}
+async function crearCuenta() {
+  const t = $('lUser').value.trim(), pass = $('lPass').value;
+  if (!t.includes('@') && !/^[a-z0-9_]{3,20}$/i.test(t))
+    return $('lError').textContent = 'El usuario debe tener de 3 a 20 letras, números o _ (sin espacios)';
+  if (pass.length < 6) return $('lError').textContent = 'La contraseña debe tener al menos 6 caracteres';
+  try {
+    const cred = await auth.createUserWithEmailAndPassword(aCorreo(t), pass);
+    await cred.user.updateProfile({ displayName: t.includes('@') ? t.split('@')[0] : t.toLowerCase() });
+    usuario = auth.currentUser; pintarAuth();
+  } catch (e) { $('lError').textContent = msgError(e); }
+}
+$('btnGoogle').onclick = entrarGoogle;
+$('btnEntrar').onclick = entrarUsuario;
+$('btnCrear').onclick = crearCuenta;
+$('cerrarLogin').onclick = () => { pendiente = null; cerrarLogin(); };
+
+// ---------- Historial ----------
 async function guardarHistorial(numero, nombre, idJuego) {
   const u = auth && auth.currentUser;
   if (!FB_OK || !u) return;
   try {
     await db.collection('pedidos').add({
-      uid: u.uid, email: u.email, numero, diamantes: elegido.diamantes, precio: elegido.precio,
-      moneda, idJuego, nombre, estado: 'pendiente', previa: PREVIA,
+      uid: u.uid, usuario: nombreVisible(u), email: u.email || '', numero,
+      diamantes: elegido.diamantes, precio: elegido.precio, moneda, idJuego, nombre,
+      estado: 'pendiente', previa: PREVIA,
       fecha: firebase.firestore.FieldValue.serverTimestamp(),
     });
   } catch (e) { console.log('No se guardó el historial', e); }
@@ -225,7 +272,6 @@ $('cerrarPedidos').onclick = () => $('fondoPedidos').classList.remove('abierto')
 // ---------- Paquetes ----------
 function pintar(d) {
   moneda = d.moneda; paquetes = d.paquetes;
-  $('tiles').innerHTML = paquetes.map((p) => `<span class="tile">💎 ${p.diamantes}</span>`).join('');
   $('grid').innerHTML = paquetes.map((p, i) => `
     <div class="card">
       ${i === 2 ? '<span class="tag">RECOMENDADO</span>' : ''}
@@ -235,19 +281,19 @@ function pintar(d) {
       <button onclick="comprar(${p.id})">Comprar</button>
     </div>`).join('');
 }
-if (PREVIA) { $('aviso').style.display = 'block'; pintar(DEMO); }
+if (PREVIA) { pintar(DEMO); }
 else { fetch('/api/paquetes').then((r) => r.json()).then(pintar); }
 pintarAuth();
 
-async function comprar(id) {
-  if (FB_OK && !auth.currentUser) { if (!(await entrar())) return; }
+function comprar(id) {
+  if (FB_OK && !auth.currentUser) { pendiente = id; abrirLogin(); return; }
   abrir(id);
 }
 function abrir(id) {
   elegido = paquetes.find((p) => p.id === id);
   $('resumen').textContent = `💎 ${elegido.diamantes} diamantes · ${moneda} ${elegido.precio.toFixed(2)}`;
   $('monto').textContent = `${moneda} ${elegido.precio.toFixed(2)}`;
-  if (auth && auth.currentUser && !$('nombre').value) $('nombre').value = (auth.currentUser.displayName || '').split(' ')[0].slice(0, 40);
+  if (auth && auth.currentUser && !$('nombre').value) $('nombre').value = nombreVisible(auth.currentUser).split(' ')[0].slice(0, 40);
   $('error').textContent = '';
   $('pasoForm').style.display = 'block'; $('pasoOk').style.display = 'none';
   $('fondo').classList.add('abierto');
